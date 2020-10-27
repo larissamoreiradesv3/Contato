@@ -29,6 +29,83 @@
                             email : 'fernando.guerra@sp.senai.br',
                             telefone : '11972084334'
                         }]
+        let btnCadastrar = document.querySelector('#btnCadastrar');
+        btnCadastar.addEventListener('click', cadastrar);
+        
+        let btnRemover = document.querySelector('#btnRemover');
+        btnRemover.addEventListener('click', remover);
+
+        let nome         = document.querySelector('#nome');
+        let email        = document.querySelector('#email');
+        let telefone     = document.querySelector('#telefone');
+
+        function listar(){
+            //Pega o elemento e armazena na variavel
+            corpoTabela = documento.querySelector('#tabela-lista-corpo');
+            //Limpa o elemento corpoTabela 
+            corpoTabela.innerHTML = "";
+            //Declara váriaveis 
+            let linha , colunaNome , colunaEmail , colunaTelefone ;
+
+            //Percorre o array frutas 
+            //item representa cada elemento/objeto no array
+            contatos.forEach(item =>{
+                //Criação do elemento tr
+                linha = document.createElement('tr');
+                //Criação do elemento td 
+                colunaNome = document.createElement('td');
+                
+                //Nome
+                //Preenche o elemento td com o dado do array 
+                colunaNome.innerHTML = item.nome;
+                //Inlcui a coluna na linha 
+                linha.appendChild(colunaNome);
+
+                //E-mail
+                colunaEmail = document.createElement('td');
+                //Preenche o elemento td com o dado do array
+                colunaEmail.innerHTML = item.email;
+                //Inclui a coluna na linha 
+                linha.appendChild(colunaEmail) ;
+
+                //Telefone 
+                colunaTelefone = document.createElement('td');
+                //Preenche o elemento ts com o dado do array
+                colunaTelefone.innerHTML = item.telefone;
+                //Inclui a coluna na linha 
+                linhaTelefone.appendChild(colunaEmail);
+
+                //Inclui a linha do td da Tabela 
+                corpoTabela.appendChild(linha);
+            });
+            LimparCampos();
+        }
+        function cadastrar(event){
+            event.Default();
+
+            //Cria um objeto com os dados do formulário 
+            let contato = {
+                nome     : nome.value,
+                email    : email.value,
+                telefone : telefone.value
+            }
+            contatos.push(contato);
+            alert('Contato cadastrado com sucesso!');
+            listar();
+        }
+        function remover(event){
+            event.preventDefault();
+            //Array de string busca pelo index
+            
+        }
+        function limparCampos(){
+            nome.value      = "";
+            email.value     = "";
+            telefone.value  = "";
+            
+            nome.focus(); 
+
+        }
     </script>
 </body>
 </html>
